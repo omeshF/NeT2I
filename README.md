@@ -114,3 +114,19 @@ This project is licensed under the [MIT License](LICENSE).
 
 - 🔗 [GitHub Repository](https://github.com/omeshF/NeT2I)
 - 🐛 [Report Issues](https://github.com/omeshF/NeT2I/issues)
+
+
+## Cite our work
+
+New algorithms for the detection of malicious traffic in 5G-MEC
+
+```latex
+@inproceedings{fernando2023new,
+  title={New algorithms for the detection of malicious traffic in 5g-mec},
+  author={Fernando, Omesh A and Xiao, Hannan and Spring, Joseph},
+  booktitle={2023 IEEE Wireless Communications and Networking Conference (WCNC)},
+  pages={1--6},
+  year={2023},
+  organization={IEEE}
+}
+```
