@@ -1,4 +1,3 @@
-
 # NeT2I - Network to Image
 
 **NeT2I** (Network to Image) is a Python tool for converting structured network traffic data into RGB images that can be used for anomaly detection via Convolutional Neural Networks (CNNs). It supports CSV inputs containing IP addresses, MAC addresses, numeric values, and string fields. These are automatically detected, processed, and encoded into image representations.
@@ -7,19 +6,19 @@
 
 ## 🔍 Key Features
 
-- Converts **CSV-based network traffic** into RGB images
-- Handles **MAC addresses**, **IP addresses**, **integers**, **floats**, and **strings**
-- Encodes numeric data using **IEEE 754 float-to-byte** representation for **lossless recovery**
-- Outputs RGB images for CNN model training or anomaly detection tasks
+- Converts **CSV-based network traffic** into RGB images  
+- Handles **MAC addresses**, **IP addresses**, **integers**, **floats**, and **strings**  
+- Encodes numeric data using **IEEE 754 float-to-byte** representation for **lossless recovery**  
+- Outputs RGB images for CNN model training or anomaly detection tasks  
 - Includes **type detection**, **data normalization**, and **image generation**
 
 ---
 
 ## 📦 Requirements
 
-- Python 3.9 or later
-- [Pillow](https://pypi.org/project/Pillow/)
-- [NumPy](https://pypi.org/project/numpy/)
+- Python 3.9 or later  
+- [Pillow](https://pypi.org/project/Pillow/)  
+- [NumPy](https://pypi.org/project/numpy/)  
 - [Pandas](https://pypi.org/project/pandas/)
 
 Install the dependencies using:
@@ -60,9 +59,9 @@ This will:
 
 ## 🧠 How It Works
 
-- **MAC Addresses** are split into two hexadecimal chunks and treated as large integers.
-- **IP Addresses** are split into four octets, each converted to float.
-- **Integers** are **first cast to float** before encoding to RGB using `struct.pack()`, preserving their IEEE 754 byte format.
+- **MAC Addresses** are split into two hexadecimal chunks and treated as large integers.  
+- **IP Addresses** are split into four octets, each converted to float.  
+- **Integers** are **first cast to float** before encoding to RGB using `struct.pack()`, preserving their IEEE 754 byte format.  
 - **Strings** are hashed to integers, then converted to floats and encoded similarly.
 
 Each float is encoded into **two RGB pixels** (6 bytes) to avoid information loss.
@@ -71,8 +70,8 @@ Each float is encoded into **two RGB pixels** (6 bytes) to avoid information los
 
 ## 📁 Output Structure
 
-- `data/`: Directory containing all generated RGB images (one per row)
-- `data_types.json`: Contains original and final column types after preprocessing
+- `data/`: Directory containing all generated RGB images (one per row)  
+- `data_types.json`: Contains original and final column types after preprocessing  
 - `from_image.csv`: Placeholder file for reverse decoding (optional, not yet included)
 
 ---
@@ -97,6 +96,57 @@ DECODED = "from_image.csv"
 
 ---
 
+## 💡 Usage Examples
+
+### Basic Usage
+
+```python
+import NeT2i.converter as converter
+
+# Simple conversion
+results = converter.load_csv('source_in2.csv')
+print(f"Generated {results['num_images']} images")
+```
+
+### Advanced Usage with Custom Parameters
+
+```python
+import NeT2i.converter as converter
+
+# Custom configuration
+results = converter.load_csv(
+    'source_in2.csv',
+    output_dir='my_images',
+    image_size=150,
+    types_file='my_types.json',
+    clean_existing=True
+)
+
+# Access results
+print(f"Original CSV shape: {results['original_shape']}")
+print(f"Detected types: {results['original_types']}")
+print(f"Final types after splitting: {results['final_types']}")
+```
+
+### Object-Oriented Usage
+
+```python
+from NeT2i.converter import NeT2iConverter
+
+# Create converter instance with custom settings
+converter = NeT2iConverter(
+    output_dir='data_images',
+    image_size=150,
+    clean_existing=True
+)
+
+# Convert multiple files
+results1 = converter.load_csv('file1.csv')
+results2 = converter.load_csv('file2.csv')
+```
+
+---
+
 ## 🧾 License
 
 This project is licensed under the [MIT License](LICENSE).
@@ -105,28 +155,12 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 👥 Authors
 
-- [Omesh Fernando](mailto:omeshf@gmail.com)
+- [Omesh Fernando](mailto:omeshf@gmail.com)  
 - [Sajid Fadlelseed](mailto:sajidqurashi1@gmail.com)
 
 ---
 
 ## 🌐 Project Links
 
-- 🔗 [GitHub Repository](https://github.com/omeshF/NeT2I)
+- 🔗 [GitHub Repository](https://github.com/omeshF/NeT2I)  
 - 🐛 [Report Issues](https://github.com/omeshF/NeT2I/issues)
-
-
-## Cite our work
-
-New algorithms for the detection of malicious traffic in 5G-MEC
-
-```latex
-@inproceedings{fernando2023new,
-  title={New algorithms for the detection of malicious traffic in 5g-mec},
-  author={Fernando, Omesh A and Xiao, Hannan and Spring, Joseph},
-  booktitle={2023 IEEE Wireless Communications and Networking Conference (WCNC)},
-  pages={1--6},
-  year={2023},
-  organization={IEEE}
-}
-```
