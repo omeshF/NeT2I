@@ -8,6 +8,7 @@ A Python library for converting network traffic data (CSV format) into RGB image
 
 - **🔍 Automatic IP Version Detection**: Separates IPv4 and IPv6 data automatically  
 - **💎 Lossless Data Encoding**: Converts network data to RGB pixels without information loss  
+- **📅 Smart Timestamp Handling**: Detects and encodes timestamps into 6 components (Y,M,D,H,M,S) 
 - **🌐 Multiple Data Type Support**: Handles IP addresses, MAC addresses, floats, integers, and strings  
 - **🧠 CNN-Ready Output**: Generates images optimized for convolutional neural networks  
 - **📋 Type Information Preservation**: Saves encoding metadata for data reconstruction via i2net  
@@ -26,6 +27,7 @@ pip install pandas numpy pillow
 - numpy
 - Pillow (PIL)
 - ipaddress (built-in)
+- python-dateutil (for timestamp parsing)
 
 ## 🚀 Quick Start
 
@@ -73,13 +75,17 @@ results = net2i.encode('network_data.csv')
 | **IPv6 Address** | Automatic pattern matching | 128-bit → 16 bytes + 2 padding | 6 RGB pixels |
 | **MAC Address** | Regex: `XX:XX:XX:XX:XX:XX` | Split into 2 hex chunks → float encoding | 4 RGB pixels |
 | **Float/Integer** | Numeric detection | Direct IEEE 754 encoding | 2 RGB pixels |
-| **String** | Default fallback | Consistent hash → float encoding | 2 RGB pixels |
+| **Timestamp** | Natural language, ISO, Unix, or custom formats | Split into 6 components: Year, Month, Day, Hour, Minute, Second | 12 RGB pixels |
+| **String** | (Fallback-Only) | Consistent hash → float encoding | 2 RGB pixels |
 
 ### Encoding Details
 - **Two-Pixel-Per-Float Strategy**: Each float value uses exactly 2 RGB pixels (6 bytes) for lossless IEEE 754 representation  
-- **IP Address Decomposition**: IPv4 addresses split into octets, IPv6 addresses use full 128-bit representation  
-- **Hash-Based String Encoding**: Strings converted using consistent hashing for reproducible results  
-
+- **IP Address Decomposition**: IPv4 addresses split into octets, IPv6 addresses use full 128-bit representation   
+- **6-Component Expansion**: Any timestamp (e.g., 03/09/2025 22:42, 1712345678, 2025-03-09T22:42:00Z) is expanded into:
+```python
+["2025", "03", "09", "22", "42", "00"]
+```
+- **Hash-Based String Encoding**: Ensuring encoding continuity and graceful degradation when data types are ambiguous or unsupported
 ## 🔧 API Reference
 
 ### Core Functions
@@ -222,10 +228,12 @@ dataloader = DataLoader(dataset, batch_size=32, shuffle=True, num_workers=4)
 
 ### Example CSV
 ```csv
-12,2001:0db8:85a3:0000:0000:8a2e:0370:7334,52:54:00:34:65:b2,...
-11,192.168.248.159,52:54:00:34:65:b2,...
-12,192.168.248.159,52:54:00:34:65:b2,...
+12,03/09/2025 22:42:02,2001:0db8:85a3:0000:0000:8a2e:0370:7334,52:54:00:34:65:b2,...
+11,03/09/2025 22:42:01,192.168.248.159,52:54:00:34:65:b2,...
+12,03/09/2025 22:43:01,192.168.248.159,52:54:00:34:65:b2,...
+12,03/09/2025 22:42:11,2001:0db8:85a3:0000:0000:8a2e:0370:7335,...
 ```
+
 
 ### Sources
 - Firewall logs
@@ -234,6 +242,7 @@ dataloader = DataLoader(dataset, batch_size=32, shuffle=True, num_workers=4)
 - Packet capture summaries
 - 5G-MEC data
 - IoT communications
+- Security event with timestamps
 
 ## 🔄 Integration with i2net
 
