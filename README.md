@@ -55,11 +55,11 @@ pip install net2i
 
 ### Requirements
 
--   Python 3.9+\
--   pandas\
--   numpy\
--   Pillow\
--   dateutil\
+-   Python 3.9+
+-   pandas
+-   numpy
+-   Pillow
+-   dateutil
 -   ipaddress (built-in)
 
 ------------------------------------------------------------------------
@@ -103,25 +103,17 @@ results = net2i.encode("network_data.csv")
 
 # 📊 Supported Network Data Types
 
-  ----------------------------------------------------------------------------
-  Data Type       Detection Method   Encoding Strategy             Output
-                                                                   Pixels
-  --------------- ------------------ ----------------------------- -----------
-  IPv4 Address    Pattern match      4 octets → floats             8 px
+ ## Encoding Summary
 
-  IPv6 Address    Pattern match      16 bytes + padding            6 px
+| Data Type      | Detection Method   | Encoding Strategy                     | Output Pixels |
+|----------------|--------------------|----------------------------------------|---------------|
+| IPv4 Address   | Pattern match      | 4 octets → floats                      | 8 px          |
+| IPv6 Address   | Pattern match      | 16 bytes + padding                     | 6 px          |
+| MAC Address    | Regex              | 6 bytes → floats                       | 4 px          |
+| Float/Integer  | Numeric detection  | IEEE-754 encoding                      | 2 px          |
+| Timestamp      | Automatic          | Y, M, D, H, M, S (6 components)        | 12 px         |
+| String         | Fallback           | Stable hash → float                    | 2 px          |
 
-  MAC Address     Regex              6 bytes → floats              4 px
-
-  Float/Integer   Numeric detection  IEEE-754                      2 px
-
-  Timestamp       Automatic          Y, M, D, H, M, S (6           12 px
-                                     components)                   
-
-  String          Fallback           Stable hash → float           2 px
-  ----------------------------------------------------------------------------
-
-------------------------------------------------------------------------
 
 # 📁 Output Structure
 
@@ -209,7 +201,7 @@ decoder.load_data("data", "reconstructed.csv")
 ```
 
 PyPI pages:
-- https://pypi.org/project/net2i/\
+- https://pypi.org/project/net2i/
 - https://pypi.org/project/i2net/
 
 ------------------------------------------------------------------------
