@@ -17,9 +17,7 @@ Downloads](https://img.shields.io/pypi/dm/net2i.svg)](https://pypi.org/project/n
 **Decode net2i images back to CSV:**\
 i2net on Github : [i2net](https://github.com/omeshF/I2NeT)
 
-i2net is also available as a pypi library: 
-[i2net on PyPI](https://pypi.org/project/i2net/)\
-[![i2net
+i2net is also available as a pypi library: [![i2net
 PyPI](https://img.shields.io/pypi/v/i2net.svg)](https://pypi.org/project/i2net/)
 
 ------------------------------------------------------------------------
