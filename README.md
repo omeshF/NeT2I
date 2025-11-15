@@ -261,7 +261,9 @@ MIT License
 
 # 🔗 Related
 
--   **i2net (decoder):** https://pypi.org/project/i2net/
+-   **i2net (decoder):** \
+    Github: [i2net](https://github.com/omeshF/I2NeT) \
+    PyPi: [i2net](https://pypi.org/project/i2net/)
 -   **Journal Article (2025)** - *Bijective Network-to-Image Encoding
     for Interpretable CNN-Based IDS*
 
