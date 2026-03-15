@@ -6,11 +6,10 @@ RGB images for machine learning applications, particularly CNNs.\
 data can be perfectly reconstructed using the companion tool **i2net**.
 
 net2i is also available as a pypi library
-[![PyPI
-Version](https://img.shields.io/pypi/v/net2i.svg)](https://pypi.org/project/net2i/)\
-
-[![PyPI
-Downloads](https://img.shields.io/pypi/dm/net2i.svg)](https://pypi.org/project/net2i/)
+[![PyPI Version](https://img.shields.io/pypi/v/net2i.svg)](https://pypi.org/project/net2i/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/net2i.svg)](https://pypistats.org/packages/net2i)
+[![Python Version](https://img.shields.io/pypi/pyversions/net2i.svg)](https://pypi.org/project/net2i/)
+[![License](https://img.shields.io/github/license/omeshF/NeT2I)](https://github.com/omeshF/NeT2I)
 
 ### 🔄 Companion Tool
 
