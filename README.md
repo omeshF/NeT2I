@@ -19,6 +19,11 @@ i2net on Github : [i2net](https://github.com/omeshF/I2NeT)
 i2net is also available as a pypi library: [![i2net
 PyPI](https://img.shields.io/pypi/v/i2net.svg)](https://pypi.org/project/i2net/)
 
+
+CiNeT on Github [CiNeT](https://github.com/omeshF/CiNeT)
+
+CiNeT (Classify in Network Transformation) provides dynamic CNN-based image classifiers for network traffic that has been transformed into images using NeT2I.
+
 ------------------------------------------------------------------------
 
 # 🚀 Features
@@ -158,7 +163,6 @@ Returns:
 ------------------------------------------------------------------------
 
 # 🧠 Machine Learning Integration
-
 ## TensorFlow / Keras
 
 ``` python
