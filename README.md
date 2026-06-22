@@ -11,6 +11,18 @@ net2i is also available as a pypi library
 [![Python Version](https://img.shields.io/pypi/pyversions/net2i.svg)](https://pypi.org/project/net2i/)
 [![License](https://img.shields.io/github/license/omeshF/NeT2I)](https://github.com/omeshF/NeT2I)
 
+---
+
+## 🌐 Try It Online — No Installation Required
+
+Use the full **net2i ↔ i2net** pipeline directly in your browser via **TrafficLens**:
+
+👉 **[https://www.nextgencyber.co.uk/tools](https://www.nextgencyber.co.uk/tools)**
+
+Upload a CSV to encode it into CNN-ready images, or upload images to decode them back to CSV — no Python setup needed.
+
+---
+
 ### 🔄 Companion Tool
 
 **Decode net2i images back to CSV:**\
